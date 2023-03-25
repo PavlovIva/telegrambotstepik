@@ -3,12 +3,12 @@ from config import TOKEN
 
 
 bot = Bot(token=TOKEN)
-dp = Dispatcher(bot)
+dp = Dispatcher()
 
 file = ['BQACAgIAAxkBAAMqY-5FNjV7ar2JV8PkEa3XRfXKEAEAAhQrAAIzbXFLUmdqfMeMRNEuBA', 'BQACAgIAAxkBAAM1Y-5QfdrsjmMykYvBz8OV1LTFdssAAlcrAAIzbXFLIKNhOIb0oGsuBA']
 
 
-@dp.message_handler(content_types=["document", "video", "audio", "conf"])
+@dp.message(content_types=["document", "video", "audio", "conf"])
 async def process_start_command(message):
     document_id = message.document.file_id
     file_info = bot.get_file(document_id)
